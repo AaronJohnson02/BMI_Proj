@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BMI Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/bg.jpeg');
+            image-resolution: auto;
+            background-size: 140% 150%;
+            margin: 0;
+            padding: 20px;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(65, 40, 15, 0.47);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 2px 4px rgba(87, 64, 6, 0.743);
+        }
+
+        h1 {
+            text-align: center;
+            color: #fffefe;
+            margin-top: 0;
+        }
+
+        p {
+            margin-top: 10px;
+            color: #fffefe;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.047);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: #ffffff;
+        }
+
+        button {
+            background-color: #2d6000;
+            color: #ffffff;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.047);
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .result p {
+            margin: 0;
+        }
+
+        ul {
+            margin-top: 10px;
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BMI Calculator</h1>
+        <p>BMI is a quantification of the probability of a person developing various unfavourable health conditions in the future based on their height and weight. Here are a few more sources to know more:</p>
+        <ul>
+            <li><a href="https://www.health.harvard.edu/blog/how-useful-is-the-body-mass-index-bmi-201603309339">Harvard Health Publishing</a></li>
+            <li><a href="https://www.nhs.uk/common-health-questions/lifestyle/what-is-the-body-mass-index-bmi/">NHS</a></li>
+            <li><a href="https://www.heart.org/en/healthy-living/healthy-eating/losing-weight/bmi-in-adults">American Heart Institute</a></li>
+        </ul>
+
+        <p>Enter your height and weight below to calculate your BMI.</p>
+        
+        <form action="/calculate_bmi" method="POST">
+            <div>
+                <input type="text" name="height" id="height" required="required" placeholder="Height (in centimeters)">
+            </div>
+            <div>
+                <br><input type="text" name="weight" id="weight" required="required" placeholder="Weight (in kilograms)">
+            </div>
+            <br><button type="submit">Calculate BMI</button>
+        </form>
+        
+        {% if bmi %}
+        <div class="result">
+            <p>{{ bmi }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
